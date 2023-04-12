@@ -1,9 +1,10 @@
+import { Home } from './Home';
+import './main.css';
+
+// Regex Final: /(\,|^|\r|\r?\n)\s*(?:"([^"]*(?:""[^"]*)*)"|([^"\,\r\n]*))/gi
+
 function App() {
-  return (
-    <div>
-      <h1>Hello, world!</h1>
-    </div>
-  );
+  return <Home />;
 }
 
 export default App;

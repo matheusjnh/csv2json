@@ -1,0 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+
+:root {
+  --max-content-width: 100%;
+  --default-container-padding: 2.5rem;
+}
+
+/* .l-page */
+.l-page {
+  display: grid;
+  height: 100vh;
+  grid-template-areas:
+    'header '
+    'content'
+    'footer ';
+  grid-template-rows: max-content auto max-content;
+}
+
+/* .l-header */
+.l-header {
+  grid-area: header;
+  background: #fff;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.08);
+}
+
+.l-header__content {
+  padding: 0 var(--default-container-padding);
+}
+
+.l-header__title {
+  font-size: 2rem;
+  font-weight: bold;
+  font-family: 'Inter', sans-serif;
+}
+
+/* .l-content */
+.l-content {
+  grid-area: content;
+  padding: 0 var(--default-container-padding);
+  background: purple;
+}
+
+/* .l-footer */
+.l-footer {
+  grid-area: footer;
+  background: green;
+}
+
+.l-footer__content {
+  padding: 0 var(--default-container-padding);
+}
+
+/* Media Query */
+@media (min-width: 1300px) {
+  :root {
+    --max-content-width: 1300px;
+  }
+
+  .l-header,
+  .l-footer {
+    display: grid;
+    grid-template-columns: var(--max-content-width);
+    justify-content: center;
+  }
+}
