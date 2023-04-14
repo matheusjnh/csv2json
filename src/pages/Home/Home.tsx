@@ -1,6 +1,19 @@
+import { useState } from 'react';
+
+import { convertCsvToJson, JsonType } from '../../convert-csv-to-json';
 import './styles.css';
 
 export function Home() {
+  const [json, setJson] = useState<JsonType[]>([]);
+
+  const handleCsvInput = (e: any) => {
+    const csvValue = e.target.value;
+
+    const convertedCsv = convertCsvToJson(csvValue);
+
+    setJson(convertedCsv);
+  };
+
   return (
     <div className="l-page">
       <div className="l-header">
@@ -10,7 +23,7 @@ export function Home() {
       </div>
 
       <div className="l-content">
-        <h1>Content</h1>
+        <textarea onChange={handleCsvInput}></textarea>
       </div>
 
       <div className="l-footer">
