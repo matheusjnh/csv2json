@@ -19,7 +19,6 @@
 /* .l-header */
 .l-header {
   grid-area: header;
-  background: #fff;
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.08);
 }
 
@@ -37,13 +36,12 @@
 .l-content {
   grid-area: content;
   padding: 0 var(--default-container-padding);
-  background: purple;
+  background: #e2e2e2;
 }
 
 /* .l-footer */
 .l-footer {
   grid-area: footer;
-  background: green;
 }
 
 .l-footer__content {
