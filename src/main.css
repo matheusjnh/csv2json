@@ -130,6 +130,15 @@ table {
   border-spacing: 0;
 }
 
+:root {
+  --color-dark: #131417;
+  --color-grey: #252830;
+  --color-primary: #0d6efd;
+  --color-primary-lightened: #3888fd;
+  --color-warning: #eca401;
+  --color-warning-lightened: #feba20;
+}
+
 .l-body {
   color: #fff;
   background: var(--color-dark);
