@@ -1,5 +1,8 @@
 import { useState } from 'react';
 
+import { Button } from '../../components/Button';
+import { Textarea } from '../../components/TextArea';
+
 import { convertCsvToJson, JsonType } from '../../convert-csv-to-json';
 import './styles.css';
 
@@ -22,8 +25,46 @@ export function Home() {
         </div>
       </div>
 
-      <div className="l-content">
-        <textarea onChange={handleCsvInput}></textarea>
+      <div className="l-main">
+        <div className="c-io">
+          <div className="c-io__upload">
+            <label className="c-io__upload__label" htmlFor="csv_input">
+              Upload your data saved as CSV
+            </label>
+            <input
+              className="c-io__upload__button"
+              type="file"
+              name="csv_input"
+              id="csv_input"
+            />
+          </div>
+
+          <div className="c-io__column">
+            <Textarea title="CSV" value={csv} setValue={setCsv} />
+
+            <div className="button-flex">
+              <div className="button-margin-right">
+                <Button
+                  text="Convert"
+                  color="primary"
+                  onClickHandler={onConvertClickHandler}
+                />
+              </div>
+
+              <div>
+                <Button
+                  text="Clear"
+                  color="warning"
+                  onClickHandler={onClearClickHandler}
+                />
+              </div>
+            </div>
+          </div>
+
+          <div className="c-io__column">
+            <Textarea title="JSON" value={jsonString} />
+          </div>
+        </div>
       </div>
 
       <div className="l-footer">
