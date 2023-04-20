@@ -1,18 +1,35 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { Button } from '../../components/Button';
 import { Textarea } from '../../components/Textarea';
 
-import { convertCsvToJson, JsonType } from '../../convert-csv-to-json';
 import './styles.css';
 
+import { convertCSVToJSONString } from '../../convert-csv-to-json';
+
 export function Home() {
-  const [json, setJson] = useState<JsonType[]>([]);
+  const defaultCsv = `album, year, US_peak_chart_post
+  The White Stripes, 1999, -
+  De Stijl, 2000, -
+  White Blood Cells, 2001, 61
+  Elephant, 2003, 6
+  Get Behind Me Satan, 2005, 3
+  Icky Thump, 2007, 2
+  Under Great White Northern Lights, 2010, 11
+  Live in Mississippi, 2011, -
+  Live at the Gold Dollar, 2012, -
+  Nine Miles from the White City, 2013, -`;
 
-  const handleCsvInput = (e: any) => {
-    const csvValue = e.target.value;
+  const [csv, setCsv] = useState(defaultCsv);
+  const [jsonString, setJsonString] = useState('');
 
-    const convertedCsv = convertCsvToJson(csvValue);
+  useEffect(() => {
+    setJsonString(convertCSVToJSONString(csv));
+  }, []);
+
+  const onConvertClickHandler = () => {
+    setJsonString(convertCSVToJSONString(csv));
+  };
 
     setJson(convertedCsv);
   };
