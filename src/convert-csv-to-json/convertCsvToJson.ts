@@ -48,6 +48,10 @@ export function convertCSVToJSON(csv: string): JsonType[] {
   return json;
 }
 
+export function convertCSVToJSONString(csv: string): string {
+  return JSON.stringify(convertCSVToJSON(csv), undefined, 2);
+}
+
 export interface JsonType {
   [index: string]: string;
 }
