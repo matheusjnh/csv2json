@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
 import { Button } from '../../components/Button';
-import { Textarea } from '../../components/TextArea';
+import { Textarea } from '../../components/Textarea';
 
 import { convertCsvToJson, JsonType } from '../../convert-csv-to-json';
 import './styles.css';
