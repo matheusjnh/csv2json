@@ -1,0 +1,29 @@
+.c-btn {
+  padding: 0.7rem 1.5rem;
+
+  color: #fff;
+  border: none;
+  border-radius: 0.3rem;
+
+  font-size: 1rem;
+  font-family: inherit;
+
+  cursor: pointer;
+}
+
+.c-btn--primary {
+  background: var(--color-primary);
+}
+
+.c-btn--primary:hover {
+  background: var(--color-primary-lightened);
+}
+
+.c-btn--warning {
+  color: var(--color-dark);
+  background: var(--color-warning);
+}
+
+.c-btn--warning:hover {
+  background: var(--color-warning-lightened);
+}
