@@ -1,4 +1,4 @@
-function convertCsvToArray(csv: string): string[][] {
+function convertCSVToArray(csv: string): string[][] {
   const csvRegex = new RegExp(
     '(,|^|\r|\r?\n) *(?:"([^"]*(?:""[^"]*)*)"|([^",\r\n]+))',
     'gi'
@@ -29,8 +29,8 @@ function convertCsvToArray(csv: string): string[][] {
   return dataArr;
 }
 
-export function convertCsvToJson(csv: string): JsonType[] {
-  const dataArr = convertCsvToArray(csv);
+export function convertCSVToJSON(csv: string): JsonType[] {
+  const dataArr = convertCSVToArray(csv);
 
   const json: JsonType[] = [];
   const keys = dataArr[0];
