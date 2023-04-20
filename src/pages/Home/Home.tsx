@@ -31,7 +31,8 @@ export function Home() {
     setJsonString(convertCSVToJSONString(csv));
   };
 
-    setJson(convertedCsv);
+  const onClearClickHandler = () => {
+    setCsv('');
   };
 
   return (
