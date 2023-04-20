@@ -1,6 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');
 
 :root {
+  --browser-vertical-scrollbar-width-margin-error: 16px;
   --max-content-width: 100%;
   --default-container-padding: 2.5rem;
 }
@@ -11,7 +12,7 @@
   height: 100vh;
   grid-template-areas:
     'header '
-    'content'
+    'main   '
     'footer ';
   grid-template-rows: max-content auto max-content;
 }
@@ -19,7 +20,9 @@
 /* .l-header */
 .l-header {
   grid-area: header;
-  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.08);
+  padding: 2rem 0;
+  background: var(--color-grey);
+  box-shadow: 0 1px 7px rgba(0, 0, 0, 0.226);
 }
 
 .l-header__content {
@@ -27,31 +30,94 @@
 }
 
 .l-header__title {
-  font-size: 2rem;
+  font-size: 1.5rem;
   font-weight: bold;
-  font-family: 'Inter', sans-serif;
 }
 
-/* .l-content */
-.l-content {
-  grid-area: content;
-  padding: 0 var(--default-container-padding);
-  background: #e2e2e2;
+/* .l-main */
+.l-main {
+  grid-area: main;
+  padding: 6rem var(--default-container-padding);
 }
 
 /* .l-footer */
 .l-footer {
+  padding: 2rem 0;
   grid-area: footer;
+  background: #333541;
 }
 
 .l-footer__content {
   padding: 0 var(--default-container-padding);
 }
 
+/* .c-io-area */
+.c-io {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3rem;
+}
+
+.c-io__column {
+  flex: 1 380px;
+}
+
+.c-io__upload {
+  flex: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.c-io__upload__label {
+  flex: 100%;
+  margin-bottom: 1rem;
+
+  cursor: pointer;
+}
+
+.c-io__upload__button {
+  padding: 0.7rem;
+
+  border: 1px solid var(--color-grey);
+  border-radius: 0.25rem;
+  background: none;
+
+  font-size: 1rem;
+
+  cursor: pointer;
+}
+
+.c-io__upload__button::file-selector-button {
+  margin: -0.7rem;
+  margin-right: 1rem;
+  padding: 0.7rem;
+  color: inherit;
+  border: none;
+  background: var(--color-grey);
+
+  cursor: pointer;
+}
+
+/* Others */
+.button-flex {
+  display: flex;
+}
+
+.button-margin-right {
+  margin-right: 2rem;
+}
+
+.csv-instructions {
+  flex: 100%;
+  margin-bottom: 2rem;
+}
+
 /* Media Query */
 @media (min-width: 1300px) {
   :root {
-    --max-content-width: 1300px;
+    --max-content-width: calc(
+      1300px - var(--browser-vertical-scrollbar-width-margin-error)
+    );
   }
 
   .l-header,
