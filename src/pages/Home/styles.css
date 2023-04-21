@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');
 
 :root {
-  --browser-vertical-scrollbar-width-margin-error: 16px;
+  --browser-vertical-scrollbar-width-margin-error: 20px;
   --max-content-width: 100%;
   --default-container-padding: 2.5rem;
 }
