@@ -9,12 +9,12 @@
 /* .l-page */
 .l-page {
   display: grid;
-  height: 100vh;
   grid-template-areas:
     'header '
     'main   '
     'footer ';
   grid-template-rows: max-content auto max-content;
+  grid-template-columns: 100%;
 }
 
 /* .l-header */
@@ -59,11 +59,11 @@
 }
 
 .c-io__column {
-  flex: 1 380px;
+  flex: 100%;
 }
 
 .c-io__upload {
-  flex: 100%;
+  width: 100%;
   display: flex;
   flex-wrap: wrap;
 }
@@ -125,5 +125,11 @@
     display: grid;
     grid-template-columns: var(--max-content-width);
     justify-content: center;
+  }
+}
+
+@media (min-width: 1024px) {
+  .c-io__column {
+    flex: 1;
   }
 }
