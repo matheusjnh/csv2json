@@ -6,24 +6,22 @@ function convertCSVToArray(csv: string): string[][] {
 
   const dataArr: string[][] = [[]];
 
-  let matches = null;
-  while ((matches = csvRegex.exec(csv))) {
-    const delimiter = matches[1];
+  let match = null;
+  while ((match = csvRegex.exec(csv))) {
+    const [, delimiter, quotedValue, nonQuotedValue] = match;
 
     if (delimiter !== '' && delimiter !== ',') {
       dataArr.push([]);
     }
 
-    let data: string;
+    let fieldValue = nonQuotedValue;
 
-    if (matches[2]) {
-      const doubleQuotesRegex = new RegExp('""', 'g');
-      data = matches[2].replace(doubleQuotesRegex, `\"`);
-    } else {
-      data = matches[3];
+    if (quotedValue) {
+      const doubleQuotesFinder = new RegExp('""', 'g');
+      fieldValue = quotedValue.replace(doubleQuotesFinder, `\"`);
     }
 
-    dataArr[dataArr.length - 1].push(data);
+    dataArr[dataArr.length - 1].push(fieldValue);
   }
 
   return dataArr;
@@ -31,18 +29,17 @@ function convertCSVToArray(csv: string): string[][] {
 
 export function convertCSVToJSON(csv: string): JsonType[] {
   const dataArr = convertCSVToArray(csv);
-
   const json: JsonType[] = [];
-  const keys = dataArr[0];
+  const [fieldNames] = dataArr;
 
   for (let i = 1; i < dataArr.length; i++) {
-    const dataObj: JsonType = {};
+    const rowData: JsonType = {};
 
-    for (let j = 0; j < keys.length; j++) {
-      dataObj[keys[j]] = dataArr[i][j] ? dataArr[i][j] : '';
+    for (let j = 0; j < fieldNames.length; j++) {
+      rowData[fieldNames[j]] = dataArr[i][j] || '';
     }
 
-    json.push(dataObj);
+    json.push(rowData);
   }
 
   return json;
