@@ -18,7 +18,7 @@ function convertCSVToArray(csv: string): string[][] {
 
     if (matches[2]) {
       const doubleQuotesRegex = new RegExp('""', 'g');
-      data = matches[2].replace(doubleQuotesRegex, '\\"');
+      data = matches[2].replace(doubleQuotesRegex, `\"`);
     } else {
       data = matches[3];
     }
