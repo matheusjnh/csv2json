@@ -8,17 +8,18 @@ import './styles.css';
 import { convertCSVToJSONString } from '../../convert-csv-to-json';
 
 export function Home() {
-  const defaultCsv = `album, year, US_peak_chart_post
-  The White Stripes, 1999, -
-  De Stijl, 2000, -
-  White Blood Cells, 2001, 61
-  Elephant, 2003, 6
-  Get Behind Me Satan, 2005, 3
-  Icky Thump, 2007, 2
-  Under Great White Northern Lights, 2010, 11
-  Live in Mississippi, 2011, -
-  Live at the Gold Dollar, 2012, -
-  Nine Miles from the White City, 2013, -`;
+  const defaultCsv =
+    'album, year, US_peak_chart_post\n' +
+    'The White Stripes, 1999, -\n' +
+    'De Stijl, 2000, -\n' +
+    'White Blood Cells, 2001, 61\n' +
+    'Elephant, 2003, 6\n' +
+    'Get Behind Me Satan, 2005, 3\n' +
+    'Icky Thump, 2007, 2\n' +
+    'Under Great White Northern Lights, 2010, 11\n' +
+    'Live in Mississippi, 2011, -\n' +
+    'Live at the Gold Dollar, 2012, -\n' +
+    'Nine Miles from the White City, 2013, -';
 
   const [csv, setCsv] = useState(defaultCsv);
   const [jsonString, setJsonString] = useState('');
