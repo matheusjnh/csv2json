@@ -14,7 +14,7 @@ function convertCSVToArray(csv: string): string[][] {
       dataArr.push([]);
     }
 
-    let fieldValue = nonQuotedValue;
+    let fieldValue = nonQuotedValue?.trim();
 
     if (quotedValue) {
       const doubleQuotesFinder = new RegExp('""', 'g');
