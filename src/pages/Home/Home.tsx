@@ -24,12 +24,25 @@ export function Home() {
   const [csv, setCsv] = useState(defaultCsv);
   const [jsonString, setJsonString] = useState('');
 
+  const handleConversion = () => {
+    const conversionResult = convertCSVToJSONString(csv);
+
+    if (conversionResult.isFailure) {
+      console.log(conversionResult.error);
+
+      setJsonString('');
+      return;
+    }
+
+    setJsonString(conversionResult.getValue());
+  };
+
   useEffect(() => {
-    setJsonString(convertCSVToJSONString(csv));
+    handleConversion();
   }, []);
 
   const onConvertClickHandler = () => {
-    setJsonString(convertCSVToJSONString(csv));
+    handleConversion();
   };
 
   const onClearClickHandler = () => {
