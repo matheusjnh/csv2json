@@ -1,3 +1,6 @@
+import { CSVConversionResult } from './convert-csv-to-json-result';
+import { JsonType } from './convert-csv-to-json-type';
+
 function convertCSVToArray(csv: string): string[][] {
   const csvRegex = new RegExp(
     '(,|^|\r|\r?\n) *(?:"([^"]*(?:""[^"]*)*)"|([^",\r\n]+))',
@@ -27,7 +30,15 @@ function convertCSVToArray(csv: string): string[][] {
   return dataArr;
 }
 
-export function convertCSVToJSON(csv: string): JsonType[] {
+function validateEmptyCSVInput(csv: string) {
+  return !!csv.trim();
+}
+
+export function convertCSVToJSON(csv: string): CSVConversionResult<JsonType[]> {
+  if (!validateEmptyCSVInput(csv)) {
+    return CSVConversionResult.fail('ConversionError: Empty CSV.');
+  }
+
   const dataArr = convertCSVToArray(csv);
   const json: JsonType[] = [];
   const [fieldNames] = dataArr;
@@ -42,13 +53,19 @@ export function convertCSVToJSON(csv: string): JsonType[] {
     json.push(rowData);
   }
 
-  return json;
+  return CSVConversionResult.ok(json);
 }
 
-export function convertCSVToJSONString(csv: string): string {
-  return JSON.stringify(convertCSVToJSON(csv), undefined, 2);
-}
+export function convertCSVToJSONString(
+  csv: string
+): CSVConversionResult<string> {
+  const conversionResult = convertCSVToJSON(csv);
 
-export interface JsonType {
-  [index: string]: string;
+  if (conversionResult.isFailure) {
+    return CSVConversionResult.fail(conversionResult.error!);
+  }
+
+  return CSVConversionResult.ok(
+    JSON.stringify(conversionResult.getValue(), undefined, 2)
+  );
 }
