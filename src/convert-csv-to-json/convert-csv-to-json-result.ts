@@ -12,7 +12,7 @@ export class CSVConversionResult<T = ResultType> {
   public readonly isSuccess: boolean;
   public readonly isFailure: boolean;
   public readonly error?: string;
-  private value?: T;
+  private _value?: T;
 
   constructor({ isSuccess, error, value }: ResultProps<T>) {
     if (isSuccess && error) {
@@ -26,15 +26,15 @@ export class CSVConversionResult<T = ResultType> {
     this.isSuccess = isSuccess;
     this.isFailure = !isSuccess;
     this.error = error;
-    this.value = value;
+    this._value = value;
   }
 
-  getValue(): T {
+  get value(): T {
     if (this.isFailure) {
       throw new Error('Cant retrieve the value from a failed result.');
     }
 
-    return this.value!;
+    return this._value!;
   }
 
   public static ok<U>(value: U): CSVConversionResult<U> {

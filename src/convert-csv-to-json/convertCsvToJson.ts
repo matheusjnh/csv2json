@@ -66,6 +66,6 @@ export function convertCSVToJSONString(
   }
 
   return CSVConversionResult.ok(
-    JSON.stringify(conversionResult.getValue(), undefined, 2)
+    JSON.stringify(conversionResult.value, undefined, 2)
   );
 }

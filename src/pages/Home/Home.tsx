@@ -34,7 +34,7 @@ export function Home() {
       return;
     }
 
-    setJsonString(conversionResult.getValue());
+    setJsonString(conversionResult.value);
   };
 
   useEffect(() => {
