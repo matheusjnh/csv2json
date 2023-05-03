@@ -1,5 +1,3 @@
-import { useEffect, useState } from 'react';
-
 import { Button } from '../../components/Button';
 import { Textarea } from '../../components/Textarea';
 
