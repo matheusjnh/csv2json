@@ -1,5 +1,4 @@
-import { CSVConversionResult } from './convert-csv-to-json-result';
-import { JsonType } from './convert-csv-to-json-type';
+import { CSVConversionResult, JsonType } from '.';
 
 function convertCSVToArray(csv: string): string[][] {
   const csvRegex = new RegExp(
