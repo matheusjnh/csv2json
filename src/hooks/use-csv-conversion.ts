@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { convertCSVToJSONString } from '../convert-csv-to-json';
+import { convertCSVToJSONString } from '../utils/convert-csv-to-json';
 
 export function useCSVConversion(defaultCsv: string) {
   const [csv, setCsv] = useState(defaultCsv);
