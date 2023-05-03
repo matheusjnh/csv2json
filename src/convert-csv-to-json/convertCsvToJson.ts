@@ -36,7 +36,7 @@ function validateEmptyCSVInput(csv: string) {
 
 export function convertCSVToJSON(csv: string): CSVConversionResult<JsonType[]> {
   if (!validateEmptyCSVInput(csv)) {
-    return CSVConversionResult.fail('ConversionError: Empty CSV.');
+    return CSVConversionResult.fail('CSV input is empty.');
   }
 
   const dataArr = convertCSVToArray(csv);
