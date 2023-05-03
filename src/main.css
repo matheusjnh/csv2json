@@ -137,6 +137,7 @@ table {
   --color-primary-lightened: #3888fd;
   --color-warning: #eca401;
   --color-warning-lightened: #feba20;
+  --color-error: #f45353;
 }
 
 .l-body {
