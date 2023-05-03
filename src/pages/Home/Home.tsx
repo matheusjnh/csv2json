@@ -5,7 +5,8 @@ import { Textarea } from '../../components/Textarea';
 
 import './styles.css';
 
-import { convertCSVToJSONString } from '../../convert-csv-to-json';
+import { ErrorMessage } from '../../components/ErrorMessage';
+import { useCSVConversion } from '../../hooks/use-csv-conversion';
 
 export function Home() {
   const defaultCsv =
@@ -21,32 +22,15 @@ export function Home() {
     'Live at the Gold Dollar, 2012, -\n' +
     'Nine Miles from the White City, 2013, -';
 
-  const [csv, setCsv] = useState(defaultCsv);
-  const [jsonString, setJsonString] = useState('');
-
-  const handleConversion = () => {
-    const conversionResult = convertCSVToJSONString(csv);
-
-    if (conversionResult.isFailure) {
-      console.log(conversionResult.error);
-
-      setJsonString('');
-      return;
-    }
-
-    setJsonString(conversionResult.value);
-  };
-
-  useEffect(() => {
-    handleConversion();
-  }, []);
+  const { jsonString, csv, error, setCsv, handleConversion, clearCsv } =
+    useCSVConversion(defaultCsv);
 
   const onConvertClickHandler = () => {
     handleConversion();
   };
 
   const onClearClickHandler = () => {
-    setCsv('');
+    clearCsv();
   };
 
   return (
@@ -72,8 +56,15 @@ export function Home() {
           </div>
 
           <div className="c-io__column">
-            <Textarea title="CSV" value={csv} setValue={setCsv} />
+            <div
+              className={`conversion-error ${
+                error && 'conversion-error--visible'
+              }`}
+            >
+              <ErrorMessage title="Error" description={error} />
+            </div>
 
+            <Textarea title="CSV" value={csv} setValue={setCsv} />
             <div className="button-flex">
               <div className="button-margin-right">
                 <Button

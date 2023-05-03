@@ -112,6 +112,21 @@
   margin-bottom: 2rem;
 }
 
+.conversion-error {
+  visibility: hidden;
+  opacity: 0;
+  position: fixed;
+  top: 15px;
+  left: 50%;
+  transition: 0.2s;
+}
+
+.conversion-error--visible {
+  visibility: visible;
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
 /* Media Query */
 @media (min-width: 768px) {
   :root {
