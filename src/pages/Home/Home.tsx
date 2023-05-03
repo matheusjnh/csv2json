@@ -6,7 +6,7 @@ import { Textarea } from '../../components/Textarea';
 import './styles.css';
 
 import { ErrorMessage } from '../../components/ErrorMessage';
-import { useCSVConversion } from '../../hooks/use-csv-conversion';
+import { useCSVConversion } from '../../hooks';
 
 export function Home() {
   const defaultCsv =
